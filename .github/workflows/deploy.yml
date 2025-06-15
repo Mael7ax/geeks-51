@@ -1,0 +1,21 @@
+name: Deploy lesson_3 folder
+
+on:
+  push:
+    branches:
+      - lesson3
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy only lesson_3 folder to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: ./lesson_3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
